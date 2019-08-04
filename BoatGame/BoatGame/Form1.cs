@@ -10,11 +10,25 @@ using System.Windows.Forms;
 
 namespace BoatGame
 {
-    public partial class Form1 : Form
+    public partial class BoatForm : Form
     {
-        public Form1()
+        public BoatForm()
         {
             InitializeComponent();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+                    }
+
+        private void BoatForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmrEnemies_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

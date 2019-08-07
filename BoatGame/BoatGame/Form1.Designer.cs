@@ -1,6 +1,6 @@
-﻿namespace BoatGame
+﻿namespace Boat_game
 {
-    partial class BoatForm
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.

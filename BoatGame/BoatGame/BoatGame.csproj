@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enemies.cs" />
+    <Compile Include="Enemies2.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

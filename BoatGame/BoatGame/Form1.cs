@@ -32,14 +32,14 @@ namespace Boat_game
             InitializeComponent();
 
             typeof(Panel).InvokeMember("DoubleBuffered",
-              BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, BoatPanel, new object[] { true });
+              BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, panel1, new object[] { true });
 
             //initializes the enemies
             for (int i = 0; i < 7; i++)
             {
                 int y = 40 + (i * 100);
                 Enemies[i] = new Enemies(y);
-              //  Enemies2[i] = new Enemies2(y);
+                Enemies2[i] = new Enemies2(y);
             }
 
 
@@ -58,29 +58,7 @@ namespace Boat_game
         }
 
 
-        private void BoatPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-            //get the graphics used to paint on the panel control
-            g = e.Graphics;
-            for (int i = 0; i < 7; i++)
-            {
-                // generate a random number from 5 to 20 and put it in rndmspeed
-
-
-                //call the Enemy class's drawEnemies method to draw the images
-                Enemies[i].drawEnemies(g);
-                Enemies2[i].drawEnemies(g);
-
-
-            }
-            Player.drawPlayer(g);
-            foreach (Harpoon m in harpoon)
-            {
-                m.drawHarpoon(g);
-                m.moveHarpoon(g);
-            }
-        }
+       
         // enables/disables timers need
         private void Stop_click(object sender, EventArgs e)
         {
@@ -92,8 +70,8 @@ namespace Boat_game
             button2.Enabled = true;
             button1.Enabled = false;
         }
-        // validates text box
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
             button2.Enabled = true;
             if (!System.Text.RegularExpressions.Regex.IsMatch(textBox1.Text, @"^[a-zA-Z-Key.Back]+$"))
@@ -101,7 +79,6 @@ namespace Boat_game
                 button2.Enabled = false;
                 MessageBox.Show("This textbox accepts only alphabetical characters");
             }
-
         }
 
         // update call
@@ -133,11 +110,64 @@ namespace Boat_game
         {
             if (e.KeyData == Keys.Left) { turnLeft = true; }
             if (e.KeyData == Keys.Right) { turnRight = true; }
-            if (e.KeyData == Keys.Space) { Space = true; }
+          //  if (e.KeyData == Keys.Space) { Space = true; }
 
         }
         //on keyup 
-        private void BoatForm_KeyUp(object sender, KeyEventArgs e)
+        
+
+        private void BoatForm_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("The aim of the game is to get the highest score within a minute the enemies get harder and harder in intervals \nUse the Left and right arrow keys to rotate \nPush spacebar to shot harpoons at oncoming enemy boats");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmrBoat_Tick(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void tmrShoot_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+            //get the graphics used to paint on the panel control
+            g = e.Graphics;
+            for (int i = 0; i < 7; i++)
+            {
+                // generate a random number from 5 to 20 and put it in rndmspeed
+
+
+                //call the Enemy class's drawEnemies method to draw the images
+                Enemies[i].drawEnemies(g);
+                Enemies2[i].drawEnemies(g);
+
+
+            }
+            Player.drawPlayer(g);
+            foreach (Harpoon m in harpoon)
+            {
+                m.drawHarpoon(g);
+                m.moveHarpoon(g);
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { turnLeft = true; }
+            if (e.KeyData == Keys.Right) { turnRight = true; }
+            if (e.KeyData == Keys.Space) { Space = true; }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { turnLeft = false; }
             if (e.KeyData == Keys.Right) { turnRight = false; }
@@ -147,14 +177,10 @@ namespace Boat_game
                 harpoon.Add(new Harpoon(Player.PlayerRec, Player.rotationAngle));
 
             }
+
         }
 
-        private void BoatForm_Load(object sender, EventArgs e)
-        {
-            MessageBox.Show("The aim of the game is to get the highest score within a minute the enemies get harder and harder in intervals \nUse the Left and right arrow keys to rotate \nPush spacebar to shot harpoons at oncoming enemy boats");
-        }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
@@ -187,7 +213,7 @@ namespace Boat_game
 
                 label4.Text = score.ToString();// displays the score
             }
-            BoatPanel.Invalidate();//makes the paint event fire to redraw the panel
+            panel1.Invalidate();//makes the paint event fire to redraw the panel
 
 
 
@@ -218,9 +244,9 @@ namespace Boat_game
             {
 
                 foreach (Harpoon m in harpoon)
-                {
-                    //checks collision for enemies2
-                    if (p.EnemiesRec.IntersectsWith(m.harpoonRec))
+{
+                   // checks collision for enemies2
+                  if (p.EnemiesRec.IntersectsWith(m.harpoonRec))
                     {
 
                         score += 1;
@@ -231,7 +257,7 @@ namespace Boat_game
 
 
                 }
-            }
+           }
             #endregion
 
             #region Countdown

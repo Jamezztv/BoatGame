@@ -25,7 +25,7 @@ namespace Boat_game
             x = 10;
             width = 60;
             height = 60;
-            EnemiesImage = Image.FromFile("player.png");
+            EnemiesImage = Image.FromFile("1Enemies.png");
             EnemiesRec = new Rectangle(x, y, width, height);
         }
 

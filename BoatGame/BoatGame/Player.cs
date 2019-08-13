@@ -46,6 +46,7 @@ namespace Boat_game
             g.Transform = matrix;
             //draw the Player
             g.DrawImage(player, PlayerRec);
+
         }
 
 

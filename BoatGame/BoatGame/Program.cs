@@ -16,7 +16,7 @@ namespace BoatGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BoatForm());
+            Application.Run(new Boat_game.Form1());
         }
     }
 }

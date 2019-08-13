@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoatForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.button2 = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrShoot = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +55,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 600);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
@@ -121,11 +123,16 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.SystemColors.Control;
-            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label7.Location = new System.Drawing.Point(890, 399);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 13);
             this.label7.TabIndex = 9;
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // tmrBoat
+            // 
+            this.tmrBoat.Tick += new System.EventHandler(this.update_tmr);
             // 
             // tmrEnemies
             // 
@@ -154,6 +161,7 @@
             this.button2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(251, 65);
+            this.button2.Click += new System.EventHandler(this.Start_click);
             // 
             // button1
             // 
@@ -164,8 +172,23 @@
             this.button1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(251, 65);
+            this.button1.Click += new System.EventHandler(this.Stop_click);
             // 
-            // BoatForm
+            // tmrShoot
+            // 
+            this.tmrShoot.Tick += new System.EventHandler(this.tmrShoot_Tick);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F);
+            this.textBox1.Location = new System.Drawing.Point(817, 76);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(130, 35);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -173,6 +196,7 @@
             this.BackgroundImage = global::BoatGame.Properties.Resources.BG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -182,9 +206,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Name = "BoatForm";
+            this.Name = "Form1";
             this.Text = "BoatForm";
             this.Load += new System.EventHandler(this.BoatForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -207,6 +233,7 @@
         private System.Windows.Forms.ToolStripMenuItem button2;
         private System.Windows.Forms.ToolStripMenuItem button1;
         private System.Windows.Forms.Timer tmrShoot;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

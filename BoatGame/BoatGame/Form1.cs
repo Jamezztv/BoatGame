@@ -20,9 +20,8 @@ namespace Boat_game
         Enemies[] Enemies = new Enemies[7]; // enemy array (left going right)
         Enemies2[] Enemies2 = new Enemies2[7]; // enemy2 array ( right going left)
         Player Player = new Player(); // player instance
-        bool Space; // bools used for key pressing
         bool hastimespeedup; // bool used for checking if player used speed up
-        bool turnLeft, turnRight; //bool 
+        bool Space,turnLeft, turnRight; //bool 
         int score = 0, lives; // values for life and score
         //declare a list for harppons from the harpoon class
         List<Harpoon> harpoon = new List<Harpoon>();
@@ -106,13 +105,7 @@ namespace Boat_game
 
 
         //on keydown
-        private void BoatForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Left) { turnLeft = true; }
-            if (e.KeyData == Keys.Right) { turnRight = true; }
-          //  if (e.KeyData == Keys.Space) { Space = true; }
-
-        }
+       
         //on keyup 
         
 
@@ -171,7 +164,7 @@ namespace Boat_game
         {
             if (e.KeyData == Keys.Left) { turnLeft = false; }
             if (e.KeyData == Keys.Right) { turnRight = false; }
-            if (e.KeyData == Keys.Space)
+            if (e.KeyData == Keys.Space) { Space = false; }
             {
                 // adds harpoon
                 harpoon.Add(new Harpoon(Player.PlayerRec, Player.rotationAngle));
@@ -181,6 +174,20 @@ namespace Boat_game
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+	frmHighScores frmHighScore2 = new frmHighScores();
+            Hide();
+            frmHighScore2.ShowDialog();
+
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
 
         }

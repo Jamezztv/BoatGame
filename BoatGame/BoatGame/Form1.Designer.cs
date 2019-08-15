@@ -45,6 +45,7 @@
             this.button1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrShoot = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnCheck = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             this.panel1.Size = new System.Drawing.Size(800, 600);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // label1
             // 
@@ -188,6 +190,16 @@
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
+            // btnCheck
+            // 
+            this.btnCheck.Location = new System.Drawing.Point(850, 492);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(132, 23);
+            this.btnCheck.TabIndex = 14;
+            this.btnCheck.Text = "Check for High Score";
+            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +208,7 @@
             this.BackgroundImage = global::BoatGame.Properties.Resources.BG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label7);
@@ -234,6 +247,7 @@
         private System.Windows.Forms.ToolStripMenuItem button1;
         private System.Windows.Forms.Timer tmrShoot;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnCheck;
     }
 }
 
